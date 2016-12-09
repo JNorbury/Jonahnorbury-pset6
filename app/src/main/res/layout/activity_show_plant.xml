@@ -30,7 +30,7 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/plantIV" />
 
-    <TextView
+    <EditText
         android:text="purchase date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_alignParentStart="true"
         android:id="@+id/purchaseTV" />
 
-    <TextView
+    <EditText
         android:text="Last Water Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,6 +56,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/WikipediaDesTV"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/okplantBTN" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:id="@+id/okplantBTN"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

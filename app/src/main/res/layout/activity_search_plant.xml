@@ -16,20 +16,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search"/>
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="plant name"/>
+            android:hint="plant name"
+            android:id="@+id/plantqueryET"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_btn_text"
+            android:onClick="searchPlant"/>
 
     </LinearLayout>
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchresultsLV"></ListView>
 

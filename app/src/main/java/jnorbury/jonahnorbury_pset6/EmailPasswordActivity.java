@@ -1,5 +1,6 @@
 package jnorbury.jonahnorbury_pset6;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -38,18 +39,18 @@ public class EmailPasswordActivity extends BaseActivity implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emailpassword);
+        setContentView(R.layout.activity_login_fire);
 
         // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-        mDetailTextView = (TextView) findViewById(R.id.detail);
-        mEmailField = (EditText) findViewById(R.id.email_login_form);
-        mPasswordField = (EditText) findViewById(R.id.password);
+//        mStatusTextView = (TextView) findViewById(R.id.status);
+//        mDetailTextView = (TextView) findViewById(R.id.detail);
+        mEmailField = (EditText) findViewById(R.id.emailET);
+        mPasswordField = (EditText) findViewById(R.id.passwordET);
 
         // Buttons
-        findViewById(R.id.email_sign_in_button).setOnClickListener(this);
-        findViewById(R.id.email_create_account_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.signinBTN).setOnClickListener(this);
+        findViewById(R.id.registerBTN).setOnClickListener(this);
+//        findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
@@ -159,10 +160,10 @@ public class EmailPasswordActivity extends BaseActivity implements
         // [END sign_in_with_email]
     }
 
-    private void signOut() {
-        mAuth.signOut();
-        updateUI(null);
-    }
+//    private void signOut() {
+//        mAuth.signOut();
+//        updateUI(null);
+//    }
 
     private boolean validateForm() {
         boolean valid = true;
@@ -189,31 +190,31 @@ public class EmailPasswordActivity extends BaseActivity implements
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+//            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail()));
+//            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
-            findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
-            findViewById(R.id.email_password_fields).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+//            findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
+//            findViewById(R.id.email_password_fields).setVisibility(View.GONE);
+//            findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
         } else {
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
-
-            findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
-            findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+//            mStatusTextView.setText(R.string.signed_out);
+//            mDetailTextView.setText(null);
+//
+//            findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
+//            findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
+//            findViewById(R.id.sign_out_button).setVisibility(View.GONE);
         }
     }
 
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.email_create_account_button) {
+        if (i == R.id.registerBTN) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.email_sign_in_button) {
+        } else if (i == R.id.signinBTN) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.sign_out_button) {
-            signOut();
+//        } else if (i == R.id.sign_out_button) {
+//            signOut();
         }
     }
 }
