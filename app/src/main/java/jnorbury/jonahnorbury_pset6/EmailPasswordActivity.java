@@ -43,8 +43,8 @@ public class EmailPasswordActivity extends BaseActivity implements
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);
         mDetailTextView = (TextView) findViewById(R.id.detail);
-        mEmailField = (EditText) findViewById(R.id.field_email);
-        mPasswordField = (EditText) findViewById(R.id.field_password);
+        mEmailField = (EditText) findViewById(R.id.email_login_form);
+        mPasswordField = (EditText) findViewById(R.id.password);
 
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);

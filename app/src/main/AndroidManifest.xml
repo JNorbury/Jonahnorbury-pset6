@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchPlantActivity" />
-        <activity android:name=".ShowPlantActivity"></activity>
+        <activity android:name=".ShowPlantActivity" />
+        <activity android:name=".LoginFireActivity"></activity>
     </application>
 
 </manifest>
