@@ -2,9 +2,9 @@ package jnorbury.jonahnorbury_pset6;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 public class ShowPlantActivity extends AppCompatActivity {
 
@@ -15,8 +15,9 @@ public class ShowPlantActivity extends AppCompatActivity {
         Plant plant = (Plant) getIntent().getSerializableExtra("plant");
 
         ((TextView) this.findViewById(R.id.plantnameTV)).setText(plant.getName());
-        ((TextView) this.findViewById(R.id.purchaseTV)).setText( "purchased on     : " + plant.getPurchase_date());
-        ((TextView) this.findViewById(R.id.lastwaterTV)).setText("last time watered: " + plant.getLast_watered());
+
+        ((EditText) this.findViewById(R.id.purchaseET)).setText(plant.getPurchase_date());
+        ((EditText) this.findViewById(R.id.lastwaterET)).setText(plant.getLast_watered());
 
     }
 }

@@ -30,29 +30,11 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/plantIV" />
 
-    <EditText
-        android:text="purchase date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/plantnameTV"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/purchaseTV" />
-
-    <EditText
-        android:text="Last Water Date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/purchaseTV"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/lastwaterTV" />
 
     <TextView
         android:text="WikipediaDesTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lastwaterTV"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/WikipediaDesTV"
@@ -68,4 +50,64 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wateredLL"
+        android:layout_below="@+id/plantIV"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="last watered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/purchaseET"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/lastwaterTV" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastwaterET"
+            android:text="lastwatered"
+            android:textColorHint="@android:color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/purchaseLL"
+        android:layout_below="@+id/wateredLL"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="purchased date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/purchaseTV" />
+
+        <EditText
+            android:text="purchase date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/purchaseET"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="last watered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="457dp"
+        android:layout_marginStart="457dp"
+        android:id="@+id/textView" />
+
 </RelativeLayout>
