@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         plants = new PlantList();
-        plants.add(new Plant("Bonsai", "12-02-2015", "https://en.wikipedia.org/wiki/Bonsai", "12-01-2015"));
-        plants.add(new Plant("larch", "12-01-2015", "https://en.wikipedia.org/wiki/Larch", "12-11-1612"));
-        plants.add(new Plant("beech", "12-02-2001", "https://en.wikipedia.org/wiki/Beech", "16-12-2015"));
-        plants.add(new Plant("rose", "12-02-1925", "https://en.wikipedia.org/wiki/Rose", "16-12-1612"));
+        plants.add(new Plant("Bonsai", "12-02-2015", "https://en.wikipedia.org/wiki/Bonsai", "12-01-2015", "fat, chubby piece of shit."));
+        plants.add(new Plant("Larch", "12-01-2015", "https://en.wikipedia.org/wiki/Larch", "12-11-1612", "fat, chubby piece of shit."));
+        plants.add(new Plant("Beech", "12-02-2001", "https://en.wikipedia.org/wiki/Beech", "16-12-2015", "fat, chubby piece of shit."));
+        plants.add(new Plant("Rose", "12-02-1925", "https://en.wikipedia.org/wiki/Rose", "16-12-1612", "fat, chubby piece of shit."));
 
         plv = (ListView) findViewById(R.id.plantsLV);
         aa = new PlantAdapter(this, R.layout.plant_list_item_layout, plants);

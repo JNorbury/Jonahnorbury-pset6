@@ -16,7 +16,7 @@ public class SearchPlantActivity extends AppCompatActivity {
     public void searchPlant(View view) {
         EditText ET = (EditText) findViewById(R.id.plantqueryET);
         String plant_name = ET.getText().toString();
-        PlantAsyncTask pat = new PlantAsyncTask(getBaseContext(), this);
+        LoadPlantFactsAsyncTask pat = new LoadPlantFactsAsyncTask(getBaseContext(), this);
         pat.execute(plant_name);
     }
 }

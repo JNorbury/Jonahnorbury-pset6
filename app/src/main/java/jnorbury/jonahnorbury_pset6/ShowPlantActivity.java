@@ -19,10 +19,11 @@ public class ShowPlantActivity extends AppCompatActivity {
         ImageView plantview = (ImageView) findViewById(R.id.plantIV);
 
         ImageAsyncTask iat = new ImageAsyncTask();
-        iat.setBmimage(plantview);
+        iat.setBmimage(plantview, plant.getImg_url());
+
         if (plant.getWiki_url() != null) {
 //            iat.execute(plant.getWiki_url());
-            iat.execute("https://ih1.redbubble.net/image.24694638.0052/flat,800x800,070,f.u1.jpg");
+            iat.execute("https://scontent-amt2-1.cdninstagram.com/t51.2885-15/e35/14591932_337346603304821_5160760702041849856_n.jpg?ig_cache_key=MTQwMTYyNzg5Njc4MzQ3NzQ0NA%3D%3D.2");
         } else {
             Toast.makeText(this, "No Image for " + plant.getName(), Toast.LENGTH_SHORT).show();
         }
@@ -41,6 +42,9 @@ public class ShowPlantActivity extends AppCompatActivity {
         }
         if (plant.getLast_watered() != null) {
             ((TextView) this.findViewById(R.id.lastwaterET)).setText(plant.getLast_watered());
+        }
+        if (plant.getDescription() != null) {
+            ((TextView) this.findViewById(R.id.WikipediaDesTV)).setText(plant.getDescription());
         }
 
 

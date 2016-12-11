@@ -29,7 +29,7 @@ import java.util.Locale;
  * Created by jonah on 09-Dec-16.
  */
 
-public class PlantAsyncTask extends AsyncTask<String, Integer, String>{
+public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
 
     private Context mcontext;
     private String searchterm;
@@ -37,11 +37,11 @@ public class PlantAsyncTask extends AsyncTask<String, Integer, String>{
     private JSONArray plantjson;
     private JSONArray urls;
     private JSONArray names;
+    private JSONArray descs;
 
     private static final String WIKI_SEARCH_PLANT =
             "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=%s&limit=4";
-//            "http://www.omdbapi.com/?s=%s&plot=long&r=json";
-    public PlantAsyncTask(Context context, Activity activity) {
+    public LoadPlantFactsAsyncTask(Context context, Activity activity) {
         mcontext = context;
         mActivity = activity;
     }
@@ -62,8 +62,6 @@ public class PlantAsyncTask extends AsyncTask<String, Integer, String>{
                     (HttpURLConnection) url.openConnection();
 
             connection.connect();
-
-            int rc = connection.getResponseCode();
 
             InputStream is = connection.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
@@ -100,7 +98,8 @@ public class PlantAsyncTask extends AsyncTask<String, Integer, String>{
             ListView plantSearchLV = (ListView) mActivity.findViewById(R.id.searchresultsLV);
 
             names = plantjson.getJSONArray(1);
-            urls = plantjson.getJSONArray(2);
+            urls = plantjson.getJSONArray(3);
+            descs = plantjson.getJSONArray(2);
 
             int n = names.length();
 
@@ -123,7 +122,7 @@ public class PlantAsyncTask extends AsyncTask<String, Integer, String>{
                         String plant = names.get(position).toString();
                         Toast.makeText(mcontext, "name = " + plant, Toast.LENGTH_SHORT).show();
                         String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                        Plant current = new Plant(plant, currentDate, urls.get(position).toString(), currentDate);
+                        Plant current = new Plant(plant, currentDate, urls.get(position).toString(), currentDate, descs.get(position).toString());
                         Intent intent = new Intent(mcontext, ShowPlantActivity.class);
                         intent.putExtra("plant", current);
                         mActivity.startActivity(intent);

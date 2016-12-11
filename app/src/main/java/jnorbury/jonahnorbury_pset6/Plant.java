@@ -1,7 +1,6 @@
 package jnorbury.jonahnorbury_pset6;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by jonah on 08-Dec-16.
@@ -15,14 +14,25 @@ public class Plant implements Serializable {
     private String last_watered;
 //    private Date last_watered;
     private String next_water;
+    private String description;
     private String last_feed;
     private String next_feed;
+    private String img_url;
 
-    public Plant(String name, String purchase_date, String wiki_url, String last_watered) {
+    public Plant(String name, String purchase_date, String wiki_url, String last_watered, String description) {
         this.name = name;
         this.purchase_date = purchase_date;
         this.wiki_url = wiki_url;
         this.last_watered = last_watered;
+        this.description = description;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 
     public String getName() {
@@ -87,5 +97,13 @@ public class Plant implements Serializable {
 
     public void setNick_name(String nick_name) {
         this.nick_name = nick_name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
