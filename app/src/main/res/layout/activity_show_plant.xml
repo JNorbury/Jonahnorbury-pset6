@@ -18,19 +18,12 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/plantIV" />
+        android:id="@+id/plantIV"
+        android:layout_toEndOf="@+id/plantnameTV"
+        android:layout_above="@+id/purchaseLL"
+        android:layout_alignLeft="@+id/okplantBTN"
+        android:layout_alignStart="@+id/okplantBTN" />
 
-
-    <TextView
-        android:text="WikipediaDesTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/WikipediaDesTV"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/okplantBTN" />
 
     <Button
         android:layout_width="wrap_content"
@@ -76,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wateredLL"
-        android:layout_above="@+id/purchaseLL"
+        android:layout_below="@+id/nicknameLL"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -90,7 +83,7 @@
             android:id="@+id/lastwaterTV" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="193dp"
             android:layout_height="wrap_content"
             android:id="@+id/lastwaterET"
             android:hint="enter date"
@@ -98,39 +91,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/plantIV"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_weight="1" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/nicknameET"
-            android:hint="nickname"
-            android:layout_below="@+id/plantIV"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/purchaseLL"
-        android:layout_above="@+id/WikipediaDesTV"
+        android:layout_below="@+id/wateredLL"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -144,9 +108,47 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/purchaseET"
-            android:layout_weight="1"
+            android:layout_weight="1.91"
             android:hint="enter date" />
 
+    </LinearLayout>
+
+    <TextView
+        android:text="WikipediaDesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WikipediaDesTV"
+        android:layout_below="@+id/purchaseLL"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plantnameTV"
+        android:id="@+id/nicknameLL"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="better known as"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/nicknameET"
+            android:hint="nickname"
+            android:layout_below="@+id/plantIV"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
 </RelativeLayout>

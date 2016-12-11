@@ -13,7 +13,6 @@ public class SearchPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_plant);
     }
 
-
     public void searchPlant(View view) {
         EditText ET = (EditText) findViewById(R.id.plantqueryET);
         String plant_name = ET.getText().toString();

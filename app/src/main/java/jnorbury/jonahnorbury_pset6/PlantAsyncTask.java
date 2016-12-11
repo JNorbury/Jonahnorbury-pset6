@@ -137,7 +137,6 @@ public class PlantAsyncTask extends AsyncTask<String, Integer, String>{
 
         } catch (Exception e) {
             Toast.makeText(mcontext, "No Results!", Toast.LENGTH_SHORT).show();
-//            Toast.makeText(.this, "No Results!", Toast.LENGTH_SHORT).show();
         }
     }
 }
