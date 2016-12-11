@@ -11,6 +11,7 @@ public class Plant implements Serializable {
     private String name;
     private String purchase_date;
     private String wiki_url;
+    private String nick_name;
     private String last_watered;
 //    private Date last_watered;
     private String next_water;
@@ -78,5 +79,13 @@ public class Plant implements Serializable {
 
     public void setNext_feed(String next_feed) {
         this.next_feed = next_feed;
+    }
+
+    public String getNick_name() {
+        return nick_name;
+    }
+
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name;
     }
 }

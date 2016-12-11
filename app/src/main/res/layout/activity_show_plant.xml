@@ -11,16 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jnorbury.jonahnorbury_pset6.ShowPlantActivity">
 
-    <TextView
-        android:text="Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/plantnameTV"
-        android:textSize="30sp" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,17 +35,48 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
+        android:text="Save"
         android:id="@+id/okplantBTN"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:text="last watered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="457dp"
+        android:layout_marginStart="457dp"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:text="Common Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/plantnameTV"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Scientific Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plantIV"
+        android:layout_alignLeft="@+id/plantIV"
+        android:layout_alignStart="@+id/plantIV"
+        android:id="@+id/sciencenameTV"
+        android:textStyle="normal|italic" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wateredLL"
-        android:layout_below="@+id/plantIV"
+        android:layout_above="@+id/purchaseLL"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -72,15 +93,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lastwaterET"
-            android:text="lastwatered"
-            android:textColorHint="@android:color/black"/>
+            android:hint="enter date"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plantIV"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/nicknameET"
+            android:hint="nickname"
+            android:layout_below="@+id/plantIV"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/purchaseLL"
-        android:layout_below="@+id/wateredLL"
+        android:layout_above="@+id/WikipediaDesTV"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -91,23 +141,12 @@
             android:id="@+id/purchaseTV" />
 
         <EditText
-            android:text="purchase date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/purchaseET"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:hint="enter date" />
 
     </LinearLayout>
-
-    <TextView
-        android:text="last watered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="457dp"
-        android:layout_marginStart="457dp"
-        android:id="@+id/textView" />
 
 </RelativeLayout>
