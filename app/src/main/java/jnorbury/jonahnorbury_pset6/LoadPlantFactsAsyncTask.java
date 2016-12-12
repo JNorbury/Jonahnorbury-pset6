@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -21,7 +20,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -121,7 +119,6 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
                                         int position, long id) {
                     try {
                         String plant = names.get(position).toString();
-                        Toast.makeText(mcontext, "name = " + plant, Toast.LENGTH_SHORT).show();
                         String currentDate = new SimpleDateFormat("dd-MM-yyyy",
                                 Locale.getDefault()).format(new Date());
 

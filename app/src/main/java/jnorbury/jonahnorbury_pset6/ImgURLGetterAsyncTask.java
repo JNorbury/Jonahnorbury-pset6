@@ -34,7 +34,7 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
     private Plant mplant;
 
     private static final String WIKI_SEARCH_PLANT =
-                "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles=%s";
+            "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles=%s";
 
     public ImgURLGetterAsyncTask(Context context, Activity activity, Plant plant) {
         mcontext = context;
@@ -70,9 +70,8 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
             reader.close();
 
             JSONObject job = new JSONObject(jstring.toString());
-
-//            String what_the_fuck = jstring.toString();
             return job.toString();
+
         } catch (Exception e) {
             return null;
         }
@@ -96,18 +95,17 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
                 plantobj = new JSONObject(result);
                 JSONObject j2 = plantobj.getJSONObject("query").getJSONObject("pages");
                 String keyvalue = j2.keys().next();
-                String url = j2.getJSONObject(keyvalue).getJSONObject("thumbnail").getString("source");
+                String url = j2.getJSONObject(keyvalue)
+                        .getJSONObject("thumbnail").getString("source");
                 mplant.setImg_url(url);
 
                 ImageAsyncTask iat = new ImageAsyncTask(mActivity);
                 iat.execute(mplant.getImg_url());
 
             } catch (Exception e) {
-                Toast.makeText(mcontext, "failed in url getter 1", Toast.LENGTH_SHORT).show();
             }
             plantjsonarr = new JSONArray(result);
         } catch (Exception e) {
-            Toast.makeText(mcontext, "failed in url getter 2", Toast.LENGTH_SHORT).show();
         }
     }
 }

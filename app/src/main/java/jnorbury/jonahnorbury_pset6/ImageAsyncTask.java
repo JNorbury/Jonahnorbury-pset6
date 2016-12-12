@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,6 +38,10 @@ public class ImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap result) {
-        bmimage.setImageBitmap(result);
+        try{
+            bmimage.setImageBitmap(result);
+        } catch (Exception e) {
+        }
+
     }
 }

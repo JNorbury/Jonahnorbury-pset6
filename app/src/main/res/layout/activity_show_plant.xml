@@ -14,7 +14,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
+        app:srcCompat="@mipmap/hold_plant_icon"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -28,6 +28,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClickSavePlant"
         android:text="Save"
         android:id="@+id/okplantBTN"
         android:layout_alignParentBottom="true"
@@ -54,16 +55,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Scientific Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/plantIV"
-        android:layout_alignLeft="@+id/plantIV"
-        android:layout_alignStart="@+id/plantIV"
-        android:id="@+id/sciencenameTV"
-        android:textStyle="normal|italic" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -120,16 +111,6 @@
             android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <TextView
-        android:text="WikipediaDesTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/WikipediaDesTV"
-        android:layout_below="@+id/sciencenameTV"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="74dp" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -153,5 +134,15 @@
             android:hint="enter date" />
 
     </LinearLayout>
+
+    <TextView
+        android:text="WikipediaDesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WikipediaDesTV"
+        android:layout_below="@+id/purchaseLL"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
