@@ -2,28 +2,25 @@ package jnorbury.jonahnorbury_pset6;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.Set;
+
+import static android.content.ContentValues.TAG;
+import static java.lang.System.in;
 
 /**
  * Created by jonah on 09-Dec-16.
@@ -33,14 +30,16 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
 
     private Context mcontext;
     private Activity mActivity;
-    private JSONArray plantjson;
+    private JSONArray plantjsonarr;
+    private Plant mplant;
 
     private static final String WIKI_SEARCH_PLANT =
-            "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles=%s";
+                "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles=%s";
 
-    public ImgURLGetterAsyncTask(Context context, Activity activity) {
+    public ImgURLGetterAsyncTask(Context context, Activity activity, Plant plant) {
         mcontext = context;
         mActivity = activity;
+        mplant = plant;
     }
 
     @Override
@@ -49,8 +48,7 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
     }
 
 
-    protected String getWikiResult(String plant_name) {
-//        searchterm = plant_name;
+    protected String passURLtoImageAST(String plant_name) {
 
         try {
             String s = String.format(WIKI_SEARCH_PLANT, URLEncoder.encode(plant_name, "utf-8"));
@@ -71,8 +69,10 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
                 jstring.append(tmp);
             reader.close();
 
-            String stringstring = jstring.toString();
-            return stringstring;
+            JSONObject job = new JSONObject(jstring.toString());
+
+//            String what_the_fuck = jstring.toString();
+            return job.toString();
         } catch (Exception e) {
             return null;
         }
@@ -80,7 +80,7 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
 
     @Override
     protected String doInBackground(String... params) {
-        return getWikiResult(params[0]);
+        return passURLtoImageAST(params[0]);
     }
 
     @Override
@@ -91,48 +91,23 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
     @Override
     protected void onPostExecute(String result) {
         try {
-            JSONArray plantjson = new JSONArray(result);
-            ListView plantSearchLV = (ListView) mActivity.findViewById(R.id.searchresultsLV);
+            JSONObject plantobj;
+            try {
+                plantobj = new JSONObject(result);
+                JSONObject j2 = plantobj.getJSONObject("query").getJSONObject("pages");
+                String keyvalue = j2.keys().next();
+                String url = j2.getJSONObject(keyvalue).getJSONObject("thumbnail").getString("source");
+                mplant.setImg_url(url);
 
-            names = plantjson.getJSONArray(1);
-            urls = plantjson.getJSONArray(3);
-            descs = plantjson.getJSONArray(2);
+                ImageAsyncTask iat = new ImageAsyncTask(mActivity);
+                iat.execute(mplant.getImg_url());
 
-            int n = names.length();
-
-            final ArrayList<String> list = new ArrayList<String>();
-
-            for (int i = 0; i < n; i++) {
-                list.add(names.get(i).toString());
-//                list.add(urls.get(i).toString());
+            } catch (Exception e) {
+                Toast.makeText(mcontext, "failed in url getter 1", Toast.LENGTH_SHORT).show();
             }
-//            hits = plantjson.getJSONArray("Search");
-//
-            final ArrayAdapter adapter = new ArrayAdapter(mActivity, android.R.layout.simple_list_item_1, list);
-            plantSearchLV.setAdapter(adapter);
-
-            plantSearchLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, final View view,
-                                        int position, long id) {
-                    try {
-                        String plant = names.get(position).toString();
-                        Toast.makeText(mcontext, "name = " + plant, Toast.LENGTH_SHORT).show();
-                        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                        Plant current = new Plant(plant, currentDate, urls.get(position).toString(), currentDate, descs.get(position).toString());
-                        Intent intent = new Intent(mcontext, ShowPlantActivity.class);
-                        intent.putExtra("plant", current);
-                        mActivity.startActivity(intent);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            });
-
+            plantjsonarr = new JSONArray(result);
         } catch (Exception e) {
-            Toast.makeText(mcontext, "No Results!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mcontext, "failed in url getter 2", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -1,5 +1,6 @@
 package jnorbury.jonahnorbury_pset6;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
@@ -16,16 +17,15 @@ import java.io.InputStream;
 public class ImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
     private ImageView bmimage;
     private String the_url;
-    private static final String IMG_URL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles=%s";
 
-    public void setBmimage(ImageView bmimage, String the_url) {
-        this.bmimage = bmimage;
-        this.the_url = the_url;
+    public ImageAsyncTask(Activity mActivity) {
+        this.bmimage = (ImageView) mActivity.findViewById(R.id.plantIV);
     }
 
     @Override
     protected Bitmap doInBackground(String... urls) {
         Bitmap Icon1 = null;
+        the_url = urls[0];
         try {
             InputStream is = new java.net.URL(the_url).openStream();
             Icon1 = BitmapFactory.decodeStream(is);

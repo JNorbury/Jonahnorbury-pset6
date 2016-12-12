@@ -111,7 +111,8 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
             }
 //            hits = plantjson.getJSONArray("Search");
 //
-            final ArrayAdapter adapter = new ArrayAdapter(mActivity, android.R.layout.simple_list_item_1, list);
+            final ArrayAdapter adapter = new ArrayAdapter(mActivity,
+                    android.R.layout.simple_list_item_1, list);
             plantSearchLV.setAdapter(adapter);
 
             plantSearchLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -121,11 +122,19 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
                     try {
                         String plant = names.get(position).toString();
                         Toast.makeText(mcontext, "name = " + plant, Toast.LENGTH_SHORT).show();
-                        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                        Plant current = new Plant(plant, currentDate, urls.get(position).toString(), currentDate, descs.get(position).toString());
+                        String currentDate = new SimpleDateFormat("dd-MM-yyyy",
+                                Locale.getDefault()).format(new Date());
+
+                        Plant curpla = new Plant(plant, currentDate, urls.get(position).toString(),
+                                currentDate, descs.get(position).toString());
+
                         Intent intent = new Intent(mcontext, ShowPlantActivity.class);
-                        intent.putExtra("plant", current);
+                        intent.putExtra("plant", curpla);
                         mActivity.startActivity(intent);
+
+                        ImgURLGetterAsyncTask iug = new ImgURLGetterAsyncTask(mcontext,
+                                mActivity, curpla);
+                        iug.execute(curpla.getName());
 
                     } catch (Exception e) {
                         e.printStackTrace();
