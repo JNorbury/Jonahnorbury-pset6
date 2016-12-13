@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_in_txt"
             android:id="@+id/signinBTN"
-            android:onClick="onClickSignIn"/>
+            android:onClick="onClick"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/register_text"
             android:id="@+id/registerBTN"
-            android:onClick="onClickRegister"/>
+            android:onClick="onClick"/>
     </LinearLayout>
 
     <TextView

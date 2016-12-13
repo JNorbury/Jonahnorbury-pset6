@@ -1,5 +1,6 @@
 package jnorbury.jonahnorbury_pset6;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -88,12 +89,11 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        // [START_EXCLUDE]
-//                        hideProgressDialog();
-                        // [END_EXCLUDE]
+                        Intent intent = new Intent(LoginFireActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 });
-        // [END create_user_with_email]
     }
 
     private void signIn(String email, String password) {
@@ -120,15 +120,11 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        // [START_EXCLUDE]
-//                        if (!task.isSuccessful()) {
-//                            mStatusTextView.setText(R.string.auth_failed);
-//                        }
-//                        hideProgressDialog();
-                        // [END_EXCLUDE]
+                        Intent intent = new Intent(LoginFireActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 });
-        // [END sign_in_with_email]
     }
 
     private void signOut() {
@@ -170,11 +166,9 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.registerBTN:
                 createAccount(email, password);
-                break;
             case R.id.signinBTN:
                 signIn(email, password);
-//            case R.id.signoutBTN:
-//                signOut();
         }
+
     }
 }

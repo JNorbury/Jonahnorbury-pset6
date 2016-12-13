@@ -64,6 +64,7 @@ public class ShowPlantActivity extends AppCompatActivity {
         if (water.matches("")) {
             realname = "empty";
         }
+
         Plant newplant = new Plant(realname, purchase, mplant.getWiki_url(), water, mplant.getDescription());
         finish();
     }
