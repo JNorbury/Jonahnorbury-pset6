@@ -16,7 +16,7 @@
         <EditText
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:hint="@string/plant_type_query_ET"
+            android:hint="@string/plant_type_search_query"
             android:id="@+id/plantqueryET"/>
 
         <Button

@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password_txt"
+        android:inputType="textPassword"
         android:id="@+id/passwordET"
         android:layout_below="@id/emailET"/>
 
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_in_txt"
             android:id="@+id/signinBTN"
-            android:onClick="onClick"/>
+            android:onClick="onClickSignIn"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/register_text"
             android:id="@+id/registerBTN"
-            android:onClick="onClick"/>
+            android:onClick="onClickRegister"/>
     </LinearLayout>
 
     <TextView
