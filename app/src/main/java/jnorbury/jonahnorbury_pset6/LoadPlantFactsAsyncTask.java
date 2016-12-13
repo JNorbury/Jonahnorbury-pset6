@@ -131,7 +131,7 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
 
                         ImgURLGetterAsyncTask iug = new ImgURLGetterAsyncTask(mcontext,
                                 mActivity, curpla);
-                        iug.execute(curpla.getName());
+                        iug.execute(curpla.getType());
 
                     } catch (Exception e) {
                         e.printStackTrace();

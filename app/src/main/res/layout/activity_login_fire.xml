@@ -14,15 +14,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Plantt"
+        android:text="@string/app_name"
         android:textSize="40sp"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/holo_green_light"
         android:id="@+id/titleTV"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/email_hint"
         android:id="@+id/emailET"
         android:layout_below="@+id/titleTV"
         android:layout_alignParentLeft="true"
@@ -32,12 +32,12 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/password_txt"
         android:id="@+id/passwordET"
         android:layout_below="@id/emailET"/>
 
     <TextView
-        android:text="Please Log In/Sign Up"
+        android:text="@string/please_log_in_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleTV"
@@ -47,7 +47,7 @@
         android:textSize="20sp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordET"
         android:layout_alignParentLeft="true"
@@ -56,19 +56,22 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_sign_in_short"
+            android:text="@string/sign_in_txt"
             android:id="@+id/signinBTN"
             android:onClick="onClick"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="or"
+            android:text="@string/or_text"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:id="@+id/textView2" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register_button_text"
+            android:text="@string/register_text"
             android:id="@+id/registerBTN"
             android:onClick="onClick"/>
     </LinearLayout>

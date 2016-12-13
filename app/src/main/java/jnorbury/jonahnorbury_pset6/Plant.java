@@ -7,20 +7,17 @@ import java.io.Serializable;
  */
 
 public class Plant implements Serializable {
-    private String name;
+    private String type;
     private String purchase_date;
-    private String wiki_url;
     private String nick_name;
     private String last_watered;
-//    private Date last_watered;
     private String next_water;
     private String description;
-    private String last_feed;
-    private String next_feed;
     private String img_url;
+    private String wiki_url;
 
     public Plant(String name, String purchase_date, String wiki_url, String last_watered, String description) {
-        this.name = name;
+        this.type = name;
         this.purchase_date = purchase_date;
         this.wiki_url = wiki_url;
         this.last_watered = last_watered;
@@ -35,12 +32,12 @@ public class Plant implements Serializable {
         this.img_url = img_url;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getPurchase_date() {
@@ -75,21 +72,6 @@ public class Plant implements Serializable {
         this.next_water = next_water;
     }
 
-    public String getLast_feed() {
-        return last_feed;
-    }
-
-    public void setLast_feed(String last_feed) {
-        this.last_feed = last_feed;
-    }
-
-    public String getNext_feed() {
-        return next_feed;
-    }
-
-    public void setNext_feed(String next_feed) {
-        this.next_feed = next_feed;
-    }
 
     public String getNick_name() {
         return nick_name;

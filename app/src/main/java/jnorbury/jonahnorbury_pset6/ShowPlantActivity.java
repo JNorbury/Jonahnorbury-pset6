@@ -6,9 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 
 public class ShowPlantActivity extends AppCompatActivity {
@@ -26,8 +23,8 @@ public class ShowPlantActivity extends AppCompatActivity {
         plantview.getLayoutParams().height = 20;
         plantview.getLayoutParams().width = 20;
 
-        if (mplant.getName() != null) {
-            ((TextView) this.findViewById(R.id.plantnameTV)).setText(mplant.getName());
+        if (mplant.getType() != null) {
+            ((TextView) this.findViewById(R.id.plantnameTV)).setText(mplant.getType());
         }
         if (mplant.getNick_name() != null) {
             ((EditText) this.findViewById(R.id.nicknameET)).setHint(mplant.getNick_name());
@@ -42,8 +39,6 @@ public class ShowPlantActivity extends AppCompatActivity {
             ((TextView) this.findViewById(R.id.WikipediaDesTV)).setText(mplant.getDescription());
         }
 
-
-
 //        ((EditText) this.findViewById(R.id.nicknameET)).setText(plant.getNick_name());
 //
 //        ((EditText) this.findViewById(R.id.purchaseET)).setText(plant.getPurchase_date());
@@ -52,9 +47,6 @@ public class ShowPlantActivity extends AppCompatActivity {
     }
 
     public void onClickSavePlant(View view) {
-//        try {
-//
-//        }
         String realname = ((TextView) findViewById(R.id.plantnameTV)).getText().toString();
         String nickname = ((EditText) findViewById(R.id.nicknameET)).getText().toString();
         String purchase = ((EditText) findViewById(R.id.purchaseET)).getText().toString();

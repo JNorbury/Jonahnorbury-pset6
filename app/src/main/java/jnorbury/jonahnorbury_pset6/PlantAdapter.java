@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 /**
  * Created by jonah on 08-Dec-16.
  */
@@ -28,13 +26,19 @@ public class PlantAdapter extends ArrayAdapter<Plant>{
         }
         Plant plantitem = plants.get(position);
         if (plantitem != null) {
-            TextView name = (TextView) convertView.findViewById(R.id.nameTV);
-            TextView purchdate = (TextView) convertView.findViewById(R.id.purchasedateTV);
-            if (name != null && purchdate != null) {
-                name.setText(plantitem.getName());
-                purchdate.setText(plantitem.getPurchase_date());
+            TextView name = (TextView) convertView.findViewById(R.id.nameTVList);
+            TextView nickname = (TextView) convertView.findViewById(R.id.nicknameTVlist);
+
+            if (plantitem.getNick_name() == null) {
+                nickname.setVisibility(View.GONE);
             } else {
-                return null;
+                nickname.setText(plantitem.getNick_name());
+            }
+
+            if (plantitem.getType() == null) {
+                name.setVisibility(View.GONE);
+            } else {
+                name.setText("type: " + plantitem.getType());
             }
         }
         return convertView;

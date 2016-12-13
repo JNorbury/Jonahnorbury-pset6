@@ -5,30 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jnorbury.jonahnorbury_pset6.SearchPlantActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/queryRL">
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:hint="plant name"
+            android:hint="@string/plant_type_query_ET"
             android:id="@+id/plantqueryET"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search_btn_text"
-            android:onClick="searchPlant"/>
+            android:onClick="searchPlant"
+            android:layout_toRightOf="@id/plantqueryET"
+            android:layout_gravity="end"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/searchplantbtn"
+            android:text="@string/search_btn"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <ListView
         android:layout_width="match_parent"
