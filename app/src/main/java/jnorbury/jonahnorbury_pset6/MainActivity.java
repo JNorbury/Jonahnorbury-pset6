@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         plants = new PlantList();
+
 //        plants.add(new Plant("Bonsai", "12-02-2015", "https://en.wikipedia.org/wiki/Bonsai", "12-01-2015", "fat, chubby piece of shit."));
 //        plants.add(new Plant("Larch", "12-01-2015", "https://en.wikipedia.org/wiki/Larch", "12-11-1612", "fat, chubby piece of shit."));
 //        plants.add(new Plant("Beech", "12-02-2001", "https://en.wikipedia.org/wiki/Beech", "16-12-2015", "fat, chubby piece of shit."));
