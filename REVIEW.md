@@ -1,0 +1,10 @@
+-comments!!
+-readme...
+-what do activities do? - headers
+-var names can be confusing (job, j2, keyvalue)
+-catch urlgetter catch log, good for debugging
+-plantlist as a seperate class unnecessary
+-within object plant default values
+-database firebase
+-firebase authentication
+-small user data persisted
