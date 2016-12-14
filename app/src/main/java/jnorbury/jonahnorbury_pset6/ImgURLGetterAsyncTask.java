@@ -24,6 +24,11 @@ import static java.lang.System.in;
 
 /**
  * Created by jonah on 09-Dec-16.
+ *
+ * ImgURLGetterAsyncTask receives a page title from LoadPlantFactsAsyncTask,
+ * uses a separate Wiki API to find the URL of the thumbnail,
+ * Then passes it on to ImageAsyncTask.
+ *
  */
 
 public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
@@ -48,7 +53,7 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
     }
 
 
-    protected String passURLtoImageAST(String plant_name) {
+    private String passURLtoImageAST(String plant_name) {
 
         try {
             String s = String.format(WIKI_SEARCH_PLANT, URLEncoder.encode(plant_name, "utf-8"));
@@ -93,11 +98,11 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
             JSONObject plantobj;
             try {
                 plantobj = new JSONObject(result);
-                JSONObject j2 = plantobj.getJSONObject("query").getJSONObject("pages");
-                String keyvalue = j2.keys().next();
-                String url = j2.getJSONObject(keyvalue)
+                JSONObject currentJObj = plantobj.getJSONObject("query").getJSONObject("pages");
+                String myKey = currentJObj.keys().next();
+                String imgUrl = currentJObj.getJSONObject(myKey)
                         .getJSONObject("thumbnail").getString("source");
-                mplant.setImg_url(url);
+                mplant.setImg_url(imgUrl);
 
                 ImageAsyncTask iat = new ImageAsyncTask(mActivity);
                 iat.execute(mplant.getImg_url());

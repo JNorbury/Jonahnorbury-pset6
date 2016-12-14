@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 
 public class Plant implements Serializable {
+    private int _id;
+
     private String type;
     private String purchase_date;
     private String nick_name;
@@ -16,12 +18,15 @@ public class Plant implements Serializable {
     private String img_url;
     private String wiki_url;
 
-    public Plant(String name, String purchase_date, String wiki_url, String last_watered, String description) {
-        this.type = name;
-        this.purchase_date = purchase_date;
-        this.wiki_url = wiki_url;
-        this.last_watered = last_watered;
-        this.description = description;
+    public Plant() {
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
     public String getImg_url() {
@@ -71,7 +76,6 @@ public class Plant implements Serializable {
     public void setNext_water(String next_water) {
         this.next_water = next_water;
     }
-
 
     public String getNick_name() {
         return nick_name;

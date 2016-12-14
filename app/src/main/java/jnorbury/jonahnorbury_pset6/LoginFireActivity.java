@@ -1,5 +1,6 @@
 package jnorbury.jonahnorbury_pset6;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +25,11 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
     private EditText mEmailfield;
     private EditText mPwdField;
+
+    private ProgressDialog progress;
 
     private static final String TAG =
             "LoginFireActivity";
@@ -118,11 +122,11 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(LoginFireActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent = new Intent(LoginFireActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
-
-                        Intent intent = new Intent(LoginFireActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
                     }
                 });
     }
@@ -169,6 +173,5 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
             case R.id.signinBTN:
                 signIn(email, password);
         }
-
     }
 }

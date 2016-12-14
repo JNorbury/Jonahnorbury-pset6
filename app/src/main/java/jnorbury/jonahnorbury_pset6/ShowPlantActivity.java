@@ -7,6 +7,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class ShowPlantActivity extends AppCompatActivity {
     private ImageView plantview;
@@ -20,8 +24,8 @@ public class ShowPlantActivity extends AppCompatActivity {
 
         plantview = (ImageView) findViewById(R.id.plantIV);
 
-        plantview.getLayoutParams().height = 20;
-        plantview.getLayoutParams().width = 20;
+        plantview.getLayoutParams().height = 40;
+        plantview.getLayoutParams().width = 40;
 
         if (mplant.getType() != null) {
             ((TextView) this.findViewById(R.id.plantnameTV)).setText(mplant.getType());
@@ -47,25 +51,32 @@ public class ShowPlantActivity extends AppCompatActivity {
     }
 
     public void onClickSavePlant(View view) {
-        String realname = ((TextView) findViewById(R.id.plantnameTV)).getText().toString();
+        String plantType = ((TextView) findViewById(R.id.plantnameTV)).getText().toString();
         String nickname = ((EditText) findViewById(R.id.nicknameET)).getText().toString();
         String purchase = ((EditText) findViewById(R.id.purchaseET)).getText().toString();
-        String water = ((EditText) findViewById(R.id.lastwaterET)).getText().toString();
+        String waterDate = ((EditText) findViewById(R.id.lastwaterET)).getText().toString();
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy",
+                Locale.getDefault()).format(new Date());
 
-        if (realname.matches("")) {
-            realname = "empty";
+        if (plantType.matches("")) {
+            plantType = "empty";
         }
         if (nickname.matches("")) {
-            realname = "empty";
+            nickname = "no nickname :(";
         }
-        if (purchase.matches("")) {
-            realname = "empty";
+        if (!purchase.matches("")) {
+            purchase = currentDate;
+        } else {
+
         }
-        if (water.matches("")) {
-            realname = "empty";
+        if (!waterDate.matches("")) {
+            waterDate = currentDate;
         }
 
-        Plant newplant = new Plant(realname, purchase, mplant.getWiki_url(), water, mplant.getDescription());
+        mplant.setType(plantType);
+        mplant.setNick_name(nickname);
+        mplant.setLast_watered(waterDate);
+        mplant.setPurchase_date(purchase);
         finish();
     }
 }

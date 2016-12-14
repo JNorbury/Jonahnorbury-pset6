@@ -24,11 +24,14 @@ public class MainActivity extends AppCompatActivity {
     private PlantList plants;
     private static final String TAG = "Mainactivity";
     private DatabaseReference myRef;
+//    private FirebaseDatabase myBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        myRef.setValue("Hello, World");
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -59,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plants = new PlantList();
-
-
 
 //        plants.add(new Plant("Bonsai", "12-02-2015", "https://en.wikipedia.org/wiki/Bonsai", "12-01-2015", "fat, chubby piece of shit."));
 //        plants.add(new Plant("Larch", "12-01-2015", "https://en.wikipedia.org/wiki/Larch", "12-11-1612", "fat, chubby piece of shit."));

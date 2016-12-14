@@ -58,6 +58,7 @@
             android:id="@+id/lastwaterTV" />
 
         <EditText
+            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lastwaterET"
@@ -86,6 +87,7 @@
             android:layout_weight="1" />
 
         <EditText
+            android:maxLines="1"
             android:layout_width="166dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -122,6 +124,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/purchaseET"
             android:layout_weight="1.91"
+            android:maxLines="1"
             android:hint="@string/enter_date_hint_ET" />
 
     </LinearLayout>

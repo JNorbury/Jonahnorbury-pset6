@@ -5,14 +5,20 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import static com.google.android.gms.internal.zzs.TAG;
+
 /**
  * Created by jonah on 11-Dec-16.
+ *
+ * ImageAsyncTask loads an image from a URL into the ImageView placeholder in ShowPlantActivity.
+ *
  */
 
 public class ImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
@@ -41,7 +47,7 @@ public class ImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
         try{
             bmimage.setImageBitmap(result);
         } catch (Exception e) {
+            Log.e(TAG, "onPostExecute: bmi.setimage is no");
         }
-
     }
 }

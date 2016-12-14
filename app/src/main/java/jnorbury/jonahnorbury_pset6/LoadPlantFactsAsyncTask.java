@@ -39,6 +39,7 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
 
     private static final String WIKI_SEARCH_PLANT =
             "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=%s&limit=4";
+
     public LoadPlantFactsAsyncTask(Context context, Activity activity) {
         mcontext = context;
         mActivity = activity;
@@ -118,12 +119,16 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
                 public void onItemClick(AdapterView<?> parent, final View view,
                                         int position, long id) {
                     try {
-                        String plant = names.get(position).toString();
+                        String planttype = names.get(position).toString();
                         String currentDate = new SimpleDateFormat("dd-MM-yyyy",
                                 Locale.getDefault()).format(new Date());
 
-                        Plant curpla = new Plant(plant, currentDate, urls.get(position).toString(),
-                                currentDate, descs.get(position).toString());
+                        Plant curpla = new Plant();
+                        curpla.setType(planttype);
+                        curpla.setPurchase_date(currentDate);
+                        curpla.setWiki_url(urls.get(position).toString());
+                        curpla.setLast_watered(currentDate);
+                        curpla.setDescription(descs.get(position).toString());
 
                         Intent intent = new Intent(mcontext, ShowPlantActivity.class);
                         intent.putExtra("plant", curpla);
@@ -132,7 +137,6 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
                         ImgURLGetterAsyncTask iug = new ImgURLGetterAsyncTask(mcontext,
                                 mActivity, curpla);
                         iug.execute(curpla.getType());
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
