@@ -15,22 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "87053781961-sc4toidu0njndck4q81e3brgu8dnl53h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "jnorbury.jonahnorbury_pset6",
-            "certificate_hash": "91C8FF333E5E2DCD7E5CB3D2987F73403DCCD705"
-          }
-        },
-        {
-          "client_id": "87053781961-n26j7ce5ehs03jacohl9gbjhbc7c62it.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "jnorbury.jonahnorbury_pset6",
-            "certificate_hash": "02B145D145BCAFFE64539B21F4612EE01BF62C3A"
-          }
-        },
-        {
           "client_id": "87053781961-ume0465c8qi5c7f96biik4u998qsg4ua.apps.googleusercontent.com",
           "client_type": 3
         }

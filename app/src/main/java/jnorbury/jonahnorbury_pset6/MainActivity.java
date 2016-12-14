@@ -11,11 +11,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,26 +27,32 @@ public class MainActivity extends AppCompatActivity {
     private PlantList plants;
     private static final String TAG = "Mainactivity";
     private DatabaseReference myRef;
-//    private FirebaseDatabase myBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        myRef.setValue("Hello, World");
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser cUser = mAuth.getCurrentUser();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("message");
-
-        if (mAuth == null) {
+        if (cUser == null) {
             Toast.makeText(this, "Not logged in.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LoginFireActivity.class);
             startActivity(intent);
             finish();
         }
+
+        // make a testplant
+        Plant testplant = new Plant();
+        testplant.setNick_name("Meurie");
+        testplant.setLast_watered("12-12-2016");
+        testplant.setType("Rose");
+        testplant.setImg_url("http://www.w3schools.com/css/trolltunga.jpg");
+
+        myRef = FirebaseDatabase.getInstance().getReference();
+
+        myRef.child("users").child(cUser.getUid()).push().setValue(testplant);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,12 +71,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plants = new PlantList();
-
-//        plants.add(new Plant("Bonsai", "12-02-2015", "https://en.wikipedia.org/wiki/Bonsai", "12-01-2015", "fat, chubby piece of shit."));
-//        plants.add(new Plant("Larch", "12-01-2015", "https://en.wikipedia.org/wiki/Larch", "12-11-1612", "fat, chubby piece of shit."));
-//        plants.add(new Plant("Beech", "12-02-2001", "https://en.wikipedia.org/wiki/Beech", "16-12-2015", "fat, chubby piece of shit."));
-//        plants.add(new Plant("Rose", "12-02-1925", "https://en.wikipedia.org/wiki/Rose", "16-12-1612", "fat, chubby piece of shit."));
-
         plv = (ListView) findViewById(R.id.plantsLV);
         aa = new PlantAdapter(this, R.layout.plant_list_item_layout, plants);
         plv.setAdapter(aa);
@@ -83,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    // Read from the database
 
 
     public void onClickSearch(View view) {
