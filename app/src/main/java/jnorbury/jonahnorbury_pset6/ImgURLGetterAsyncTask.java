@@ -4,29 +4,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Set;
 
 import static android.content.ContentValues.TAG;
-import static java.lang.System.in;
 
 /**
  * Created by jonah on 09-Dec-16.
  *
- * ImgURLGetterAsyncTask receives a page title from LoadPlantFactsAsyncTask,
- * uses a separate Wiki API to find the URL of the thumbnail,
+ * ImgURLGetterAsyncTask receives a page title,
+ * uses a query Wiki API to find the URL of the thumbnail,
  * Then passes it on to ImageAsyncTask.
  *
  */
@@ -106,8 +101,8 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
 
                 ImageAsyncTask iat = new ImageAsyncTask(mActivity);
                 iat.execute(mplant.getImg_url());
-
             } catch (Exception e) {
+                Log.e(TAG, "failed to get plant");
             }
             plantjsonarr = new JSONArray(result);
         } catch (Exception e) {

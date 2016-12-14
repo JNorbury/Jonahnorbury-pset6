@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -14,27 +14,41 @@
         android:text="@string/your_plants"
         android:textSize="30sp"
         android:textColor="@android:color/holo_green_light"
-        android:id="@+id/textView4" />
+        android:id="@+id/textView4"
+        android:layout_weight="0"/>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="add plant"
-        android:layout_gravity="end"
-        android:onClick="onClickSearch"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_weight="0">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favourite_cb_text"
+            android:paddingRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="plantname"/>
+    </LinearLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="240dp"
         android:id="@+id/plantsLV"
-        android:layout_weight="0.94"
+        android:layout_weight="1"
         android:layout_above="@+id/button2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/textView4"></ListView>
 
-</RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/add_plant_btn"
+        android:layout_gravity="end"
+        android:onClick="onClickSearch"
+        android:id="@+id/button2" />
+
+</LinearLayout>

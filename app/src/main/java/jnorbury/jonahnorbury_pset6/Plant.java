@@ -7,25 +7,37 @@ import java.io.Serializable;
  */
 
 public class Plant implements Serializable {
-    private int _id;
 
+    private String _id;
     private String type;
-    private String purchase_date;
     private String nick_name;
+
+    private String purchase_date;
     private String last_watered;
     private String next_water;
+
     private String description;
     private String img_url;
     private String wiki_url;
 
+    private boolean favourite;
+
+    public boolean isFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
+
     public Plant() {
     }
 
-    public int get_id() {
+    public String get_id() {
         return _id;
     }
 
-    public void set_id(int _id) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 

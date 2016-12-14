@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,6 +46,13 @@ public class PlantAdapter extends ArrayAdapter<Plant>{
             } else {
                 name.setText("type: " + plantitem.getType());
             }
+
+            CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkboxfav);
+            if(checkBox != null) {
+                checkBox.setChecked(plantitem.isFavourite());
+                checkBox.setTag(position);
+            }
+
         }
         return convertView;
     }

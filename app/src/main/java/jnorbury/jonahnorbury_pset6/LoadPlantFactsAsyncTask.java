@@ -25,6 +25,10 @@ import java.util.Locale;
 
 /**
  * Created by jonah on 09-Dec-16.
+ *
+ * LoadPlantFactsAsyncTask receives a search term,
+ * uses the OpenSearch api from wikipedia to generate results,
+ * then displays the results in a listview in SearchPlantActivity.
  */
 
 public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
@@ -32,7 +36,6 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
     private Context mcontext;
     private String searchterm;
     private Activity mActivity;
-    private JSONArray plantjson;
     private JSONArray urls;
     private JSONArray names;
     private JSONArray descs;
@@ -134,9 +137,8 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
                         intent.putExtra("plant", curpla);
                         mActivity.startActivity(intent);
 
-                        ImgURLGetterAsyncTask iug = new ImgURLGetterAsyncTask(mcontext,
-                                mActivity, curpla);
-                        iug.execute(curpla.getType());
+                        mActivity.finish();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

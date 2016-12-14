@@ -57,4 +57,10 @@
     <string name="search_btn">search</string>
     <string name="plant_name_query_ET">plant name</string>
     <string name="plant_type_search_query">plant type</string>
+    <string name="purchased_date_text">purchased date</string>
+    <string name="wikipediadestv_txt">WikipediaDesTV</string>
+    <string name="favourite_cb_text">favourite</string>
+    <string name="add_plant_btn">add plant</string>
+    <string name="nickname_text_listlayout">Nickname</string>
+    <string name="type_text_listlayout">type</string>
 </resources>

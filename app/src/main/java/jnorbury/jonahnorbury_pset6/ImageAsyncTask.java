@@ -31,7 +31,7 @@ public class ImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected Bitmap doInBackground(String... urls) {
-        Bitmap Icon1 = null;
+        Bitmap Icon1;
         the_url = urls[0];
         try {
             InputStream is = new java.net.URL(the_url).openStream();
