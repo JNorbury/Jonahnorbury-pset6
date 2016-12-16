@@ -4,7 +4,7 @@
 Final App project "Plantt" for the course "Native App Studio", 
 University of Amsterdam (UvA), 16-12-2016.
 
-Created with love by Jonah Norbury, 10742891.
+Created with love by Jonah Norbury, student no. 10742891.
 
 ## Introduction
 ### Requirements
@@ -34,6 +34,14 @@ If you like your plant enough you can give it a check representing a favourite, 
 If you are like me and still dehydrate the plant, you can go to its screen and kill it. It will then be removed from your life, virtually.
 
 ![showplantactivity](https://github.com/JNorbury/Jonahnorbury-pset6/blob/NEW_PROJ/device-2016-12-16-235126.png?raw=true)
+
+## Final Words
+This was intense, but I enjoyed it. 
+Special shoutout to Renske from minor programming for her fantastic didactic links to complicated java code, 
+fellow student Olaf for being extremely helpful, 
+and my peer reviewer Rik for putting the dots on the i on my program.
+
+Jonah Norbury, 10742891.
 
 ## FAQ
 ### Why use WIKI, isn't that going to give other results, too?
