@@ -104,7 +104,7 @@ public class ShowPlantActivity extends AppCompatActivity {
             pushRef.setValue(mplant);
         } else { // else overwrite old plant
             myRef.child("users").child(cUser.getUid()).child(plant_id).removeValue();
-            myRef.child("users").child(cUser.getUid()).child(plant_id).push().setValue(mplant);
+            myRef.child("users").child(cUser.getUid()).push().setValue(mplant);
         }
         finish();
     }
