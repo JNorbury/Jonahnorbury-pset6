@@ -29,7 +29,11 @@ Starting off you need to login or register on "my" firebase server (use any emai
 Use search to search for a plant, add it with the relevant info and press save (don't kill it just yet, that'll come later). 
 If you like your plant enough you can give it a check representing a favourite, which is stored locally on the device.
 
+![mainactivity screenshot](https://github.com/JNorbury/Jonahnorbury-pset6/blob/NEW_PROJ/device-2016-12-16-234635.png?raw=false)
+
 If you are like me and still dehydrate the plant, you can go to its screen and kill it. It will then be removed from your life, virtually.
+
+![showplantactivity](https://github.com/JNorbury/Jonahnorbury-pset6/blob/NEW_PROJ/device-2016-12-16-235126.png?raw=true)
 
 ## FAQ
 ### Why use WIKI, isn't that going to give other results, too?
