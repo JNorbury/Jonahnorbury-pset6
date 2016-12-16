@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                             R.layout.plant_list_item_layout, plants);
                     plv.setAdapter(aa);
                     aa.notifyDataSetChanged();
-
                     currentprogress.dismiss();
                     listenToClick();
 
