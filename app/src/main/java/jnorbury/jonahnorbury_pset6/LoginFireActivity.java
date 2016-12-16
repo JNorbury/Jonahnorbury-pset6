@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,6 +40,11 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_fire);
         mAuth = FirebaseAuth.getInstance();
+
+        EditText emailTV = (EditText) findViewById(R.id.emailET);
+        emailTV.setText("test@test.com");
+        EditText pwdET = (EditText) findViewById(R.id.passwordET);
+        pwdET.setText("testtest");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -89,13 +95,12 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(LoginFireActivity.this, R.string.auth_failed,
+                            Toast.makeText(LoginFireActivity.this, R.string.registration_err_toast_txt,
                                     Toast.LENGTH_SHORT).show();
+                        } else{
+
                         }
 
-                        Intent intent = new Intent(LoginFireActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
                     }
                 });
     }

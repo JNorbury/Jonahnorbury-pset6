@@ -63,4 +63,9 @@
     <string name="add_plant_btn">add plant</string>
     <string name="nickname_text_listlayout">Nickname</string>
     <string name="type_text_listlayout">type</string>
+    <string name="registration_err_toast_txt">Registration failed... Account already exists? Trying signin.</string>
+    <string name="nickname_hint">nickname</string>
+    <string name="better_known_as_tv">better known as</string>
+    <string name="last_watered_tv">last watered</string>
+    <string name="save_btn_text">Save</string>
 </resources>

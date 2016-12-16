@@ -12,82 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickSavePlant"
-        android:text="Save"
+        android:text="@string/save_btn_text"
         android:id="@+id/okplantBTN"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="last watered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="457dp"
-        android:layout_marginStart="457dp"
-        android:id="@+id/textView" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nicknameLL"
-        android:id="@+id/masterhorLL">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/wateredLL"
-            android:paddingRight="50dp"
-            android:orientation="vertical"
-            android:layout_below="@+id/nicknameLL"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:text="@string/last_watered_TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/purchaseET"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:id="@+id/lastwaterTV" />
-
-            <EditText
-                android:maxLines="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lastwaterET"
-                android:hint="@string/enter_date_hint_ET"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/purchaseLL"
-            android:paddingLeft="50dp">
-
-            <TextView
-                android:text="@string/purchased_date_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/purchaseTV" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/purchaseET"
-                android:maxLines="1"
-                android:hint="@string/enter_date_hint_ET" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
 
     <TextView
         android:text="@string/wikipediadestv_txt"
@@ -113,6 +42,7 @@
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/masterhorLL"
         android:layout_toEndOf="@+id/plantnameTV"
+        android:layout_toRightOf="@+id/plantnameTV"
         android:layout_alignLeft="@+id/okplantBTN"
         android:layout_alignStart="@+id/okplantBTN" />
 
@@ -126,11 +56,9 @@
         android:layout_alignParentStart="true">
 
         <TextView
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:text="better known as"
+            android:text="@string/better_known_as_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/textView3"
             android:layout_weight="1" />
 
@@ -141,11 +69,66 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/nicknameET"
-            android:hint="nickname"
-            android:layout_below="@+id/plantIV"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:hint="@string/nickname_hint"
             android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/masterhorLL"
+        android:layout_below="@+id/nicknameLL"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wateredLL"
+            android:paddingRight="50dp"
+            android:paddingEnd="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="@string/last_watered_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastwaterTV" />
+
+            <EditText
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastwaterET"
+                android:inputType="date"
+                android:hint="@string/enter_date_hint_ET"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/purchaseLL"
+            android:paddingLeft="50dp"
+            android:paddingStart="50dp">
+
+            <TextView
+                android:text="@string/purchased_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/purchaseTV" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/purchaseET"
+                android:inputType="date"
+                android:maxLines="1"
+                android:hint="@string/enter_date_hint_ET" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <TextView

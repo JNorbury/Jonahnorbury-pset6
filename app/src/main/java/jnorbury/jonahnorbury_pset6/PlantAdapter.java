@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 /**
  * Created by jonah on 08-Dec-16.
  */
@@ -32,7 +30,7 @@ public class PlantAdapter extends ArrayAdapter<Plant>{
         Plant plantitem = plants.get(position);
 
         if (plantitem != null) {
-            TextView name = (TextView) convertView.findViewById(R.id.nameTVList);
+            TextView name = (TextView) convertView.findViewById(R.id.typeTVList);
             TextView nickname = (TextView) convertView.findViewById(R.id.nicknameTVlist);
 
             if (plantitem.getNick_name() == null) {

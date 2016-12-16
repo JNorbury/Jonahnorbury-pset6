@@ -4,7 +4,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="top">
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -14,25 +15,54 @@
         android:onClick="addFav"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nickname_text_listlayout"
             android:textSize="25sp"
             android:id="@+id/nicknameTVlist"/>
 
-        <TextView
-            android:text="@string/type_text_listlayout"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
-            android:id="@+id/nameTVList" />
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/purchaselayoutTV"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:text="12-12-18"/>
+
+            <TextView
+                android:text="@string/type_text_listlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp"
+                android:id="@+id/typeTVList"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/waterlayoutTV"
+                android:layout_toStartOf="@+id/waterlayoutTV" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/waterlayoutTV"
+                android:textSize="20sp"
+                android:paddingRight="20dp"
+                android:text="12-12-18"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/purchaselayoutTV"
+                android:layout_toStartOf="@+id/purchaselayoutTV" />
+
+        </RelativeLayout>
     </LinearLayout>
-
 </LinearLayout>

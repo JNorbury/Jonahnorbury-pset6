@@ -1,9 +1,11 @@
 package jnorbury.jonahnorbury_pset6;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,12 +25,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.google.android.gms.internal.zzs.TAG;
+
 /**
  * Created by jonah on 09-Dec-16.
  *
  * LoadPlantFactsAsyncTask receives a search term,
  * uses the OpenSearch api from wikipedia to generate results,
  * then displays the results in a listview in SearchPlantActivity.
+ *
  */
 
 public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
@@ -39,6 +44,7 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
     private JSONArray urls;
     private JSONArray names;
     private JSONArray descs;
+    private ProgressDialog progDailog;
 
     private static final String WIKI_SEARCH_PLANT =
             "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=%s&limit=4";
@@ -51,6 +57,12 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        progDailog = new ProgressDialog(mActivity);
+        progDailog.setMessage("Loading...");
+        progDailog.setIndeterminate(false);
+        progDailog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progDailog.setCancelable(true);
+        progDailog.show();
     }
 
 
@@ -109,36 +121,35 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
 
             for (int i = 0; i < n; i++) {
                 list.add(names.get(i).toString());
-//                list.add(urls.get(i).toString());
             }
-//            hits = plantjson.getJSONArray("Search");
-//
+
             final ArrayAdapter adapter = new ArrayAdapter(mActivity,
                     android.R.layout.simple_list_item_1, list);
             plantSearchLV.setAdapter(adapter);
 
+
+            // OnClickItemListener for listview in SearchPlantActivity
+            // Passes Object (of type Plant) onto
             plantSearchLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view,
                                         int position, long id) {
                     try {
                         String planttype = names.get(position).toString();
+                        String description = descs.get(position).toString();
                         String currentDate = new SimpleDateFormat("dd-MM-yyyy",
                                 Locale.getDefault()).format(new Date());
 
-                        Plant curpla = new Plant();
-                        curpla.setType(planttype);
-                        curpla.setPurchase_date(currentDate);
-                        curpla.setWiki_url(urls.get(position).toString());
-                        curpla.setLast_watered(currentDate);
-                        curpla.setDescription(descs.get(position).toString());
+                        Plant newplant = createPlantWithParms(planttype, currentDate,
+                                position, currentDate, description);
 
-                        Intent intent = new Intent(mcontext, ShowPlantActivity.class);
-                        intent.putExtra("plant", curpla);
-                        mActivity.startActivity(intent);
+                        if (newplant != null) {
+                            Intent intent = new Intent(mcontext, ShowPlantActivity.class);
+                            intent.putExtra("plant", newplant);
+                            mActivity.startActivity(intent);
 
-                        mActivity.finish();
-
+                            mActivity.finish();
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -149,5 +160,24 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
         } catch (Exception e) {
             Toast.makeText(mcontext, "No Results!", Toast.LENGTH_SHORT).show();
         }
+        progDailog.dismiss();
+    }
+
+    private Plant createPlantWithParms(String type, String purchdate,
+                                       int position, String waterdate, String desc) {
+        Plant curpla = new Plant();
+
+        try {
+            curpla.setWiki_url(urls.get(position).toString());
+            curpla.setDescription(descs.get(position).toString());
+            curpla.setType(type);
+            curpla.setPurchase_date(purchdate);
+            curpla.setLast_watered(waterdate);
+            curpla.setDescription(desc);
+            return curpla;
+        } catch (Exception e) {
+            Log.e(TAG, "createPlantWithParms: failed upon sets");
+        }
+        return null;
     }
 }
