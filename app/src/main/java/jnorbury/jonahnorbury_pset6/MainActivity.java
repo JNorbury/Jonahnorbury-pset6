@@ -125,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         currentprogress.setCancelable(true);
     }
 
-
     public void onClickSearch(View view) {
         Intent intent = new Intent(this, SearchPlantActivity.class);
         startActivity(intent);
