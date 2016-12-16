@@ -15,8 +15,20 @@
         android:text="@string/save_btn_text"
         android:id="@+id/okplantBTN"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickKillPlant"
+        android:textColor="@android:color/holo_red_light"
+        android:background="@android:color/black"
+        android:text="@string/kill_plant_btn"
+        android:id="@+id/notokplantBTN"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
 
     <TextView
         android:text="@string/wikipediadestv_txt"
@@ -42,9 +54,7 @@
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/masterhorLL"
         android:layout_toEndOf="@+id/plantnameTV"
-        android:layout_toRightOf="@+id/plantnameTV"
-        android:layout_alignLeft="@+id/okplantBTN"
-        android:layout_alignStart="@+id/okplantBTN" />
+        android:layout_toRightOf="@+id/plantnameTV" />
 
     <LinearLayout
         android:orientation="vertical"

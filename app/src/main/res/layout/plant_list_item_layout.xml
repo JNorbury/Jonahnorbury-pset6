@@ -13,6 +13,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/checkboxfav"
         android:paddingTop="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
         android:onClick="addFav"/>
 
     <LinearLayout

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     aa.notifyDataSetChanged();
                     currentprogress.dismiss();
                     listenToClick();
+                    listenToLongClick();
 
                 } catch (Exception e){
                     Log.d(TAG, "Value is: null");
@@ -143,6 +145,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), ShowPlantActivity.class);
                 intent.putExtra("plant", current);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void listenToLongClick() {
+        plv.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View arg0) {
+                Toast.makeText(getApplicationContext(), "Long Clicked " ,
+                        Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
     }

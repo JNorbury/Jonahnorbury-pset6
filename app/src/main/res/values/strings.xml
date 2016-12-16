@@ -68,4 +68,6 @@
     <string name="better_known_as_tv">better known as</string>
     <string name="last_watered_tv">last watered</string>
     <string name="save_btn_text">Save</string>
+    <string name="plant_name_list_index_text">Plant Name</string>
+    <string name="kill_plant_btn">Kill</string>
 </resources>

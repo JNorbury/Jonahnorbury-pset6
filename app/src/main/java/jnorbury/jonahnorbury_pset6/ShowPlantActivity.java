@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,40 +60,30 @@ public class ShowPlantActivity extends AppCompatActivity {
     public void onClickSavePlant(View view) {
 
         String plantType = ((TextView) findViewById(R.id.plantnameTV)).getText().toString();
-        String nickname = ((EditText) findViewById(R.id.nicknameET)).getText().toString();
-        String purchase = ((EditText) findViewById(R.id.purchaseET)).getText().toString();
-        String waterDate = ((EditText) findViewById(R.id.lastwaterET)).getText().toString();
-        String currentDate = new SimpleDateFormat("dd-MM-yyyy",
-                Locale.getDefault()).format(new Date());
+//        String currentDate = new SimpleDateFormat("dd-MM-yyyy",
+//                Locale.getDefault()).format(new Date());
 
-        // figure out plant details from views
+        if (((EditText) findViewById(R.id.nicknameET)).getText().toString().matches("")) {
+            mplant.setNick_name(((EditText) findViewById(R.id.nicknameET)).getHint().toString());
+        } else {
+            mplant.setNick_name(((EditText) findViewById(R.id.nicknameET)).getText().toString());
+        }
+
+        if (((EditText) findViewById(R.id.purchaseET)).getText().toString().matches("")) {
+            mplant.setPurchase_date(((EditText) findViewById(R.id.purchaseET)).getHint().toString());
+        } else {
+            mplant.setPurchase_date(((EditText) findViewById(R.id.purchaseET)).getText().toString());
+        }
+
+        if (((EditText) findViewById(R.id.lastwaterET)).getText().toString().matches("")) {
+            mplant.setLast_watered(((EditText) findViewById(R.id.lastwaterET)).getHint().toString());
+        } else {
+            mplant.setLast_watered(((EditText) findViewById(R.id.lastwaterET)).getText().toString());
+        }
+
         if (plantType.matches("")) {
-            plantType = "empty";
+            mplant.setType("no type");
         }
-        if (nickname.matches("")) {
-            nickname = "no nickname :(";
-        }
-
-        // plants without a given purchase/last water date are defaulted to today.
-        if (purchase.matches("")) {
-            if (mplant.getPurchase_date().matches("")) {
-                purchase = currentDate;
-            } else { // unless they already have one.
-                waterDate = mplant.getPurchase_date();
-            }
-        }
-        if (waterDate.matches("")) {
-            if (mplant.getLast_watered().matches("")) {
-                waterDate = currentDate;
-            } else {
-                waterDate = mplant.getLast_watered();
-            }
-        }
-
-        mplant.setType(plantType);
-        mplant.setNick_name(nickname);
-        mplant.setLast_watered(waterDate);
-        mplant.setPurchase_date(purchase);
 
         DatabaseReference pushRef = myRef.child("users").child(cUser.getUid()).push();
 
@@ -103,9 +94,17 @@ public class ShowPlantActivity extends AppCompatActivity {
             mplant.set_id((pushRef.getKey()));
             pushRef.setValue(mplant);
         } else { // else overwrite old plant
-            myRef.child("users").child(cUser.getUid()).child(plant_id).removeValue();
-            myRef.child("users").child(cUser.getUid()).push().setValue(mplant);
+            myRef.child("users").child(cUser.getUid()).child(plant_id).setValue(mplant);
         }
         finish();
+    }
+
+    public void onClickKillPlant(View view) {
+        if (mplant.get_id() != null) {
+            myRef.child("users").child(cUser.getUid()).child(mplant.get_id()).removeValue();
+            finish();
+        } else {
+            Toast.makeText(this, "You don't own this plant yet.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

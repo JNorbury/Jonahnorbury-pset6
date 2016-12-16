@@ -11,16 +11,18 @@ public class Plant implements Serializable {
     private String _id;
     private String type;
     private String nick_name;
+    private String description;
 
     private String purchase_date;
     private String last_watered;
-    private String next_water;
 
-    private String description;
     private String img_url;
     private String wiki_url;
 
     private boolean favourite;
+
+    public Plant() {
+    }
 
     public boolean isFavourite() {
         return favourite;
@@ -28,9 +30,6 @@ public class Plant implements Serializable {
 
     public void setFavourite(boolean favourite) {
         this.favourite = favourite;
-    }
-
-    public Plant() {
     }
 
     public String get_id() {
@@ -79,14 +78,6 @@ public class Plant implements Serializable {
 
     public void setLast_watered(String last_watered) {
         this.last_watered = last_watered;
-    }
-
-    public String getNext_water() {
-        return next_water;
-    }
-
-    public void setNext_water(String next_water) {
-        this.next_water = next_water;
     }
 
     public String getNick_name() {

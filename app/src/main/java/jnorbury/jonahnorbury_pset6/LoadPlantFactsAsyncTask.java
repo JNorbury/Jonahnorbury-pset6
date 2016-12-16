@@ -57,12 +57,7 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progDailog = new ProgressDialog(mActivity);
-        progDailog.setMessage("Loading...");
-        progDailog.setIndeterminate(false);
-        progDailog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progDailog.setCancelable(true);
-        progDailog.show();
+        onProgressInitiate();
     }
 
 
@@ -111,11 +106,17 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
             JSONArray plantjson = new JSONArray(result);
             ListView plantSearchLV = (ListView) mActivity.findViewById(R.id.searchresultsLV);
 
+            // wacky Wiki api returns lists of lists, JSONArray(1) is the list of wiki page names,
+            // JSONArray(2) for their respective descriptions and JSONArray(3) for the urls.
             names = plantjson.getJSONArray(1);
-            urls = plantjson.getJSONArray(3);
             descs = plantjson.getJSONArray(2);
+            urls = plantjson.getJSONArray(3);
 
             int n = names.length();
+
+            if (n == 0) {
+                Toast.makeText(mcontext, "No results for " + searchterm +" :(", Toast.LENGTH_SHORT).show();
+            }
 
             final ArrayList<String> list = new ArrayList<String>();
 
@@ -126,7 +127,6 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
             final ArrayAdapter adapter = new ArrayAdapter(mActivity,
                     android.R.layout.simple_list_item_1, list);
             plantSearchLV.setAdapter(adapter);
-
 
             // OnClickItemListener for listview in SearchPlantActivity
             // Passes Object (of type Plant) onto
@@ -158,6 +158,7 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
             });
 
         } catch (Exception e) {
+            progDailog.dismiss();
             Toast.makeText(mcontext, "No Results!", Toast.LENGTH_SHORT).show();
         }
         progDailog.dismiss();
@@ -179,5 +180,14 @@ public class LoadPlantFactsAsyncTask extends AsyncTask<String, Integer, String>{
             Log.e(TAG, "createPlantWithParms: failed upon sets");
         }
         return null;
+    }
+
+    private void onProgressInitiate () {
+        progDailog = new ProgressDialog(mActivity);
+        progDailog.setMessage("Loading...");
+        progDailog.setIndeterminate(false);
+        progDailog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progDailog.setCancelable(true);
+        progDailog.show();
     }
 }
