@@ -60,8 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/dropIV"
-            android:paddingLeft="30dp"
-            android:paddingStart="30dp"
+            android:paddingLeft="50dp"
+            android:paddingStart="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:src="@mipmap/drop_icon"/>

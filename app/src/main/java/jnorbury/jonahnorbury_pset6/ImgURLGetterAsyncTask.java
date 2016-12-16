@@ -48,6 +48,8 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
     }
 
 
+    // concatinates query URL with search term in a utf-8 urlencoded string
+    // gets inputstream and reads over lines to return a string of a JSONObject to postexecute.
     private String passURLtoImageAST(String plant_name) {
 
         try {
@@ -87,6 +89,7 @@ public class ImgURLGetterAsyncTask extends AsyncTask<String, Integer, String>{
         super.onProgressUpdate(values);
     }
 
+    // postexecute receives JSONObject, then "iterates" through keys to return the img source url.
     @Override
     protected void onPostExecute(String result) {
         try {

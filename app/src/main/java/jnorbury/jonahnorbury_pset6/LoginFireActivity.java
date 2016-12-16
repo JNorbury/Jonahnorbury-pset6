@@ -22,6 +22,15 @@ import static android.R.attr.onClick;
 import static jnorbury.jonahnorbury_pset6.R.id.password;
 import static jnorbury.jonahnorbury_pset6.R.string.email;
 
+/**
+ * Created by jonah on 09-Dec-16.
+ *
+ * LoginFireActivity allows users to sign in to or register on the firebase server.
+ * Users that register with a pre-existing account
+ * are automatically signed in (if password is correct).
+ *
+ */
+
 public class LoginFireActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
@@ -35,16 +44,12 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
     private static final String TAG =
             "LoginFireActivity";
 
+    // establish connection with server and start a listener for sign-in state
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_fire);
         mAuth = FirebaseAuth.getInstance();
-
-        EditText emailTV = (EditText) findViewById(R.id.emailET);
-        emailTV.setText("test@test.com");
-        EditText pwdET = (EditText) findViewById(R.id.passwordET);
-        pwdET.setText("testtest");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -76,15 +81,12 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    // registers users with new password and email, making sure they suffice the standards of
+    // email = x@y.z etc.
     private void createAccount(String email, String password) {
-//        Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
         }
-
-//        showProgressDialog();
-
-        // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -105,15 +107,12 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
                 });
     }
 
+    // signs in user unless email and/or password not regstered/incorrect respectively.
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
             return;
         }
-
-//        showProgressDialog();
-
-        // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -136,11 +135,9 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
                 });
     }
 
-    private void signOut() {
-        mAuth.signOut();
-//        updateUI(null);
-    }
 
+    // validateform checks the legitimacy of the text entries for email and password,
+    // does not check authorization of user.
     private boolean validateForm() {
         boolean valid = true;
 
@@ -164,6 +161,7 @@ public class LoginFireActivity extends AppCompatActivity implements View.OnClick
     }
 
     // from http://stackoverflow.com/questions/16611198/how-to-know-which-button-called-a-method
+    // depending on the button, the respective method is called
     @Override
     public void onClick(View v){
         mEmailfield = (EditText) findViewById(R.id.emailET);
